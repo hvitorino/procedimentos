@@ -1,0 +1,15 @@
+{
+  "name": "procedimentos",
+  "version": "1.0.0",
+  "description": "App para a The Mônia, Suzanna Tavares, registrar os procedimentos realizados no seu dia à dia",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./**/*.test.js",
+    "start": "nodemon app.js"
+  },
+  "author": "hvitorino <hamon.vitorino@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}

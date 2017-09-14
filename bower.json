@@ -1,0 +1,18 @@
+{
+  "name": "procedimentos",
+  "description": "App para a The Mônia, Suzanna Tavares, registrar os procedimentos realizados no seu dia à dia",
+  "main": "index.js",
+  "authors": [
+    "hvitorino <hamon.vitorino@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
