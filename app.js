@@ -1,19 +1,19 @@
-const express = require('express');
+import express from 'express';
+import ProcedimentosRouter from './src/api/procedimentos/router';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+const procedimentos = new ProcedimentosRouter();
+
 app.use(express.static('src/views'));
 
-app.get('/lalaland', function (req, res) {
-    res.send('lalaland');
-});
+procedimentos.routeTo(app);
 
 app.listen(port, function (err) {
     if (err) {
-        console.log('FUCK! Something went wrong: ' + err);
+        console.log('Something went wrong: ' + err);
     } else {
-        console.log("Im alive!");
+        console.log('I\'m alive!');
     }
 });

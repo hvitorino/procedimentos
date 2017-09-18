@@ -2,14 +2,29 @@
   "name": "procedimentos",
   "version": "1.0.0",
   "description": "App para a The Mônia, Suzanna Tavares, registrar os procedimentos realizados no seu dia à dia",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "mocha ./**/*.test.js",
-    "start": "nodemon app.js"
+    "babel": "babel-node app.js"
   },
   "author": "hvitorino <hamon.vitorino@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "mongoose": "^4.11.11"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "mocha": "^3.5.3"
   }
 }
