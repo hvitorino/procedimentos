@@ -1,21 +1,19 @@
 import express from 'express';
-import ProcedimentosRouter from '../router'
-import chai from 'chai';
+import ApiInstaller from '../../../config/apiInstaller';
 import request from 'supertest';
 
-describe('rota para', () => {
-    const app = express();
-    const router = new ProcedimentosRouter();
+describe('rota', () => {
+    const app = express();    
 
     before(() => {
-        router.routeTo(app);
+        ApiInstaller.install(app);
     });
 
     describe('/procedimentos', () => {
         it('post', () => {
             return request(app)
                 .post('/api/procedimentos', { data: { name: 'lalaland' } })
-                .expect(200, null);
+                .expect(200, 'ok');
         });
 
         it('get', () => {

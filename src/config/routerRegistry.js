@@ -1,9 +1,10 @@
-export default class RouterRegistry {
-    static get allRouters() {
-        return [];
-    }
+import ProcedimentosRouter from '../api/procedimentos/router';
 
-    static register (apiRouter) {
+export default class RouterRegistry {
+    static register(apiRouter) {
         RouterRegistry.allRouters.push(apiRouter);
     }
-}
+};
+
+RouterRegistry.allRouters = [];
+RouterRegistry.register(new ProcedimentosRouter());

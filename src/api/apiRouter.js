@@ -6,8 +6,6 @@ export default class ApiRouter {
         this.resourceName = resourceName;
         this.controller = controller;
         this.apiRouter = express.Router();
-
-        RouterRegistry.register(this);
     }
 
     routeTo (app) {

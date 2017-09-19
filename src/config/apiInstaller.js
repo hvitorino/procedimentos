@@ -6,4 +6,4 @@ export default class ApiInstaller {
         MiddlewareInstaller.install(app);
         RouterInstaller.install(app);
     }
-}
+};

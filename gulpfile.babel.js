@@ -50,5 +50,5 @@ gulp.task('test', ['babel'], () => {
 
     gulp
         .src(paths.js, { read: false })
-        .pipe(plugins.mocha({ reporter: 'nyan' }));
+        .pipe(plugins.mocha({ reporter: 'spec' }));
 })

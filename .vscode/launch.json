@@ -10,6 +10,7 @@
             "name": "Launch Program",
             "program": "${workspaceRoot}/build/app.js",
             "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+            "args": [ "--debug" ],
             "cwd": "${workspaceRoot}",
             "sourceMaps": true
         },
