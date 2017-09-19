@@ -8,8 +8,10 @@ export default class ApiRouter {
     }
 
     routeTo (app) {
-        app.use(this._buildRoot());
-        app.use(this._buildResource());
+        this._buildRoot();
+        this._buildResource();
+
+        app.use('/api', this.apiRouter);
     }
 
     _buildRoot () {
@@ -22,8 +24,6 @@ export default class ApiRouter {
         rootRouter.post((req, res) => {
             res.send(this.controller.create(req.body.data));
         });
-
-        return rootRouter;
     }
 
     _buildResource() {
@@ -47,7 +47,5 @@ export default class ApiRouter {
         
             res.send(this.controller.delete(id));
         });
-
-        return resourceRouter;
     }
 };
