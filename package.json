@@ -23,8 +23,11 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "gulp-babel": "^7.0.0",
     "gulp-load-plugins": "^1.5.0",
-    "mocha": "^3.5.3"
+    "gulp-mocha": "^4.3.1",
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0"
   }
 }

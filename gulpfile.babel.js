@@ -4,16 +4,16 @@ import path from 'path';
 
 const plugins = loadPlugins();
 
-const paths = {
-    js: [
-        'app.js',
-        './src/api/**/*.js',
-        '!build/**',
-        '!node_modules/**'
-    ]
-};
-
 gulp.task('babel', () => {
+    const paths = {
+        js: [
+            'app.js',
+            './src/api/**/*.js',
+            '!build/**',
+            '!node_modules/**'
+        ]
+    };
+
     return gulp.src(paths.js, { base: '.' })
         .pipe(plugins.babel())
         .pipe(gulp.dest('build'));
@@ -37,3 +37,17 @@ gulp.task('debug', ['babel'], () => {
         tasks: ['babel']
     });
 });
+
+gulp.task('test', ['babel'], () => {
+    const paths = {
+        js: [
+            './build/**/*.js',
+            '!./build/app.js',
+            '!node_modules/**'
+        ]
+    };
+
+    gulp
+        .src(paths.js, { read: false })
+        .pipe(plugins.mocha({ reporter: 'nyan' }));
+})
