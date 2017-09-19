@@ -1,10 +1,13 @@
 import express from 'express';
+import RouterRegistry from '../config/routerRegistry';
 
 export default class ApiRouter {
     constructor(resourceName, controller) {
         this.resourceName = resourceName;
         this.controller = controller;
         this.apiRouter = express.Router();
+
+        RouterRegistry.register(this);
     }
 
     routeTo (app) {

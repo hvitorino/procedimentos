@@ -13,7 +13,9 @@ describe('rota para', () => {
 
     describe('/procedimentos', () => {
         it('post', () => {
-            throw new Error('Não implementado');
+            return request(app)
+                .post('/api/procedimentos', { data: { name: 'lalaland' } })
+                .expect(200, null);
         });
 
         it('get', () => {

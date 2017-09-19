@@ -9,6 +9,7 @@ gulp.task('babel', () => {
         js: [
             'app.js',
             './src/api/**/*.js',
+            './src/config/**/*.js',
             '!build/**',
             '!node_modules/**'
         ]

@@ -1,14 +1,12 @@
 import express from 'express';
-import ProcedimentosRouter from './src/api/procedimentos/router';
+import ApiInstaller from './src/config/apiInstaller';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const procedimentos = new ProcedimentosRouter();
-
 app.use(express.static('src/views'));
 
-procedimentos.routeTo(app);
+ApiInstaller.install(app);
 
 app.listen(port, function (err) {
     if (err) {
