@@ -1,5 +1,4 @@
 import express from 'express';
-import RouterRegistry from '../config/routerRegistry';
 
 export default class ApiRouter {
     constructor(resourceName, controller) {

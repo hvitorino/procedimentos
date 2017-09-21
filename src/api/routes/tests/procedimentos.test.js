@@ -1,12 +1,12 @@
 import express from 'express';
-import ApiInstaller from '../../../config/apiInstaller';
+import Api from '../../setup/api';
 import request from 'supertest';
 
 describe('rota', () => {
     const app = express();    
 
     before(() => {
-        ApiInstaller.install(app);
+        Api.setup(app);
     });
 
     describe('/procedimentos', () => {
