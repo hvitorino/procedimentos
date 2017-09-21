@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import sourcemaps from 'gulp-sourcemaps';
 import clean from 'gulp-clean';
 import loadPlugins from 'gulp-load-plugins';
 import path from 'path';
@@ -23,7 +24,9 @@ gulp.task('babel', ['clean'], () => {
     };
 
     return gulp.src(paths.js, { base: '.' })
+        .pipe(sourcemaps.init())
         .pipe(plugins.babel())
+        .pipe(sourcemaps.write('./sourcemaps'))
         .pipe(gulp.dest(BUILD_PATH));
 })
 

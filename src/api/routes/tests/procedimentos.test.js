@@ -10,17 +10,18 @@ describe('rota', () => {
     });
 
     describe('/procedimentos', () => {
-        it('post', () => {
-            return request(app)
-                .post('/api/procedimentos', { data: { name: 'lalaland' } })
-                .expect(200, 'ok');
-        });
-
         it('get', () => {
             return request(app)
                 .get('/api/procedimentos')
                 .expect('Content-Type', /json/)
                 .expect(200, []);
+        });
+
+        it('post', () => {
+            return request(app)
+                .post('/api/procedimentos')
+                .send({ data: { name: 'lalaland' } })
+                .expect(200, { id: 1, name: 'lalaland' });
         });
     });
 

@@ -9,12 +9,18 @@ export default class ApiController {
     }
 
     create(data) {
+        console.log('data', data);
+
         let novoItem = {
             ...data,
-            id: _getNewId()            
+            id: this._getNewId()            
         };
 
-        return this.todosOsItens.push(novoItem);
+        console.log('novoItem', novoItem);
+
+        this.todosOsItens.push(novoItem);
+
+        return novoItem;
     }
 
     read(id) {
