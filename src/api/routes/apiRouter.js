@@ -22,8 +22,6 @@ export default class ApiRouter {
         });
         
         rootRouter.post((req, res) => {
-            console.log('req.body', req.body);
-
             res.send(this.controller.create(req.body.data));
         });
     }

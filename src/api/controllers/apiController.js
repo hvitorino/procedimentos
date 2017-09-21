@@ -9,14 +9,10 @@ export default class ApiController {
     }
 
     create(data) {
-        console.log('data', data);
-
         let novoItem = {
             ...data,
             id: this._getNewId()            
         };
-
-        console.log('novoItem', novoItem);
 
         this.todosOsItens.push(novoItem);
 
@@ -31,10 +27,9 @@ export default class ApiController {
         const item = this._findItemById(id);
 
         if (item) {
-            item = {
-                id: id,
-                ...data
-            };
+            Object.keys(data).forEach((key) => {
+                item[key] = data[key];
+            });
         }
 
         return item;
@@ -45,7 +40,7 @@ export default class ApiController {
 
         if (item) {
             const idx = this.todosOsItens.indexOf(item);
-            this.todosOsItens.slice(idx, 1);
+            this.todosOsItens.splice(idx, 1);
         }
 
         return item;
