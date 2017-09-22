@@ -3,8 +3,6 @@ import RoutesRegistry from '../setup/routesRegistry';
 
 export default class Routes {
     static setup(app) {
-        const loadedItems = fs.readdirSync('./src/api/routes');
-
         require('require-all')({
             dirname     : `${__dirname}/../routes`,
             excludeDirs :  /tests/,
