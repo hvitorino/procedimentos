@@ -1,7 +1,7 @@
 export default class RoutesRegistry {
     static register(apiRouter) {
-        RoutesRegistry.allRouters.push(apiRouter);
+        RoutesRegistry.allRoutes.push(apiRouter);
     }
 };
 
-RoutesRegistry.allRouters = [];
+RoutesRegistry.allRoutes = [];

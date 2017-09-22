@@ -1,12 +1,12 @@
 import express from 'express';
-import ApiInstaller from './src/config/apiInstaller';
+import ApiInstaller from './src/api/setup/api';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static('src/views'));
 
-ApiInstaller.install(app);
+ApiInstaller.setup(app);
 
 app.listen(port, function (err) {
     if (err) {
