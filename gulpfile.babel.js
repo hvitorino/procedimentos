@@ -32,18 +32,17 @@ gulp.task('compile', ['clean'], () => {
 gulp.task('run', ['compile'], () => {
     plugins.nodemon({
         script: path.join(BUILD_PATH, 'app.js'),
-        watch: './api',
-        tasks: ['compile']
+        watch : './api',
+        tasks : ['compile']
     });
 });
 
 gulp.task('debug', ['compile'], () => {
     plugins.nodemon({
-        exec: 'node --debug',
+        exec  : 'node --debug',
         script: path.join(BUILD_PATH, 'app.js'),
-        ext: 'js',
-        ignore: ['node_modules/**/*.js'],
-        tasks: ['compile']
+        watch : './api',
+        tasks : ['compile']
     });
 });
 
