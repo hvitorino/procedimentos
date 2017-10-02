@@ -18,6 +18,22 @@ gulp.task('compile', ['clean'], () => {
     const paths = {
         js: [
             'app.js',
+            './api/**/*.js',
+            '!./api/**/*.test.js'
+        ]
+    };
+
+    return gulp.src(paths.js, { base: '.' })
+        .pipe(sourcemaps.init())
+        .pipe(plugins.babel())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(BUILD_PATH));
+});
+
+gulp.task('compile-test', ['clean'], () => {
+    const paths = {
+        js: [
+            '!app.js',
             './api/**/*.js'
         ]
     };
@@ -27,7 +43,7 @@ gulp.task('compile', ['clean'], () => {
         .pipe(plugins.babel())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(BUILD_PATH));
-})
+});
 
 gulp.task('run', ['compile'], () => {
     plugins.nodemon({
@@ -46,7 +62,7 @@ gulp.task('debug', ['compile'], () => {
     });
 });
 
-gulp.task('test', ['compile'], () => {
+gulp.task('test', ['compile-test'], () => {
     const paths = {
         js: [
             `./${BUILD_PATH}/**/*.js`,
@@ -58,4 +74,19 @@ gulp.task('test', ['compile'], () => {
     gulp
         .src(paths.js, { read: false })
         .pipe(plugins.mocha({ reporter: 'spec' }));
-})
+});
+
+gulp.task('debug-test', ['compile-test'], () => {
+    const paths = {
+        js: [
+            `./${BUILD_PATH}/**/*.test.js`
+        ]
+    };
+
+    gulp
+        .src(paths.js, { read: false })
+        .pipe(plugins.mocha({ 
+            debugBrk: true,
+            reporter: 'spec' 
+        }));
+});

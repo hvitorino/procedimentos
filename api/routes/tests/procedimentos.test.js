@@ -1,5 +1,5 @@
 import express from 'express';
-import Api from '../../setup/api';
+import Api from '../../setup/all';
 import request from 'supertest';
 
 describe('rota', () => {
