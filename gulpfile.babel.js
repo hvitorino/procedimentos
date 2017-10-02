@@ -1,55 +1,53 @@
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import clean from 'gulp-clean';
+import FileCache from 'gulp-file-cache';
 import loadPlugins from 'gulp-load-plugins';
 import path from 'path';
 
 const plugins = loadPlugins();
 
-const BUILD_PATH = 'build';
+const BUILD_PATH = './dist';
 
 gulp.task('clean', () => {
-    return gulp.src(BUILD_PATH, {read: false})
+    return gulp.src(BUILD_PATH, { read: false })
         .pipe(clean());
 });
 
-gulp.task('babel', ['clean'], () => {
+gulp.task('compile', ['clean'], () => {
     const paths = {
         js: [
             'app.js',
-            './src/api/**/*.js',
-            `!${BUILD_PATH}/**`,
-            '!node_modules/**'
+            './api/**/*.js'
         ]
     };
 
     return gulp.src(paths.js, { base: '.' })
         .pipe(sourcemaps.init())
         .pipe(plugins.babel())
-        .pipe(sourcemaps.write('./sourcemaps'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(BUILD_PATH));
 })
 
-gulp.task('run', ['babel'], () => {
+gulp.task('run', ['compile'], () => {
     plugins.nodemon({
         script: path.join(BUILD_PATH, 'app.js'),
-        ext: 'js',
-        ignore: ['node_modules/**/*.js'],
-        tasks: ['babel']
+        watch: './api',
+        tasks: ['compile']
     });
 });
 
-gulp.task('debug', ['babel'], () => {
+gulp.task('debug', ['compile'], () => {
     plugins.nodemon({
         exec: 'node --debug',
         script: path.join(BUILD_PATH, 'app.js'),
         ext: 'js',
         ignore: ['node_modules/**/*.js'],
-        tasks: ['babel']
+        tasks: ['compile']
     });
 });
 
-gulp.task('test', ['babel'], () => {
+gulp.task('test', ['compile'], () => {
     const paths = {
         js: [
             `./${BUILD_PATH}/**/*.js`,

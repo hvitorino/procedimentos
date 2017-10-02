@@ -9,4 +9,5 @@ export default class ProcedimentosRouter extends ApiRouter {
     }
 };
 
+
 RoutesRegistry.register(new ProcedimentosRouter());

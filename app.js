@@ -1,5 +1,5 @@
 import express from 'express';
-import ApiInstaller from './src/api/setup/api';
+import ApiInstaller from './api/setup/all';
 
 const app = express();
 const port = process.env.PORT || 3000;
